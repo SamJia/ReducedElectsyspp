@@ -1,0 +1,42 @@
+{
+	"name": "ReducedElectsys++",
+	"version": "1.0",
+	"icons": { "128": "logo_new.png" },
+	"description": "上海交通大学选课网优化工具",
+    "homepage_url": "http://laohyx.com/",
+   //  "background": {
+	  //   "scripts": ["background.js"],
+	  //   "persistent": false
+	  // },
+    "browser_action": {
+        "default_icon": "logo_new.png",
+        "default_title": "ReducedElectsys++",
+        "default_popup": "popup/popup.html"
+    },
+	"content_scripts": [
+		{
+            "matches": ["http://electsys.sjtu.edu.cn/edu/student/*"
+                     ],
+            "js": ["content_script/jquery-1.6.1.min.js",
+                 "content_script/lesson.js",
+                 "content_script/optimize.js",
+                 "content_script/score.js",
+                 "content_script/login_page.js",
+                 "content_script/load.js",
+                 "content_script/eductionList.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
+		}
+	],
+    "permissions": [
+        "http://*/*",
+        "notifications",
+		"management",
+        "tabs"
+    ],
+    "manifest_version": 2,
+    "web_accessible_resources": [
+        "manifest.json"
+    ]
+}
