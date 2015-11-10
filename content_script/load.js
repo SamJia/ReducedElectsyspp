@@ -1,47 +1,49 @@
 jQuery.get(
-    chrome.extension.getURL("manifest.json"),
-    function(data){
-        localStorage['extension_version'] = data['version'];
-        alert(data['version']);
-    },
-    "json"
+	chrome.extension.getURL("manifest.json"),
+	function(data) {
+		localStorage['extension_version'] = data['version'];
+		alert(data['version']);
+	},
+	"json"
 );
 
 
 
 jQuery.extend(jQuery, {
-    inJSON: function(json, key){
-        var hit, hits = [];
-        jQuery.each(json, function(k,v){
-            if (k === key)
-                hits.push(v);
-            if (typeof(v) === "string"){
-                return true;
-            } else if (jQuery.isArray(v) || jQuery.isPlainObject(v)) {
-                var r = jQuery.inJSON(v, key);
-                if (r.length > 0)
-                    hits = hits.concat(r);
-            }
-        });
-        return hits;
-    }
+	inJSON: function(json, key) {
+		var hit, hits = [];
+		jQuery.each(json, function(k, v) {
+			if (k === key)
+				hits.push(v);
+			if (typeof(v) === "string") {
+				return true;
+			} else if (jQuery.isArray(v) || jQuery.isPlainObject(v)) {
+				var r = jQuery.inJSON(v, key);
+				if (r.length > 0)
+					hits = hits.concat(r);
+			}
+		});
+		return hits;
+	}
 });
 
 
-Array.prototype.distinct = function() { 
-	var a = {}, c = [], l = this.length; 
-	for (var i = 0; i < l; i++) { 
-	var b = this[i]; 
-	var d = (typeof b) + b; 
-	if (a[d] === undefined) { 
-	c.push(b); 
-	a[d] = 1; 
-	} 
-	} 
-	return c; 
-} 
+Array.prototype.distinct = function() {
+	var a = {},
+		c = [],
+		l = this.length;
+	for (var i = 0; i < l; i++) {
+		var b = this[i];
+		var d = (typeof b) + b;
+		if (a[d] === undefined) {
+			c.push(b);
+			a[d] = 1;
+		}
+	}
+	return c;
+}
 
-function inUrl(url){
+function inUrl(url) {
 	if (document.URL.toLowerCase().indexOf(url.toLowerCase()) < 0)
 		return false;
 	else
@@ -51,33 +53,32 @@ function inUrl(url){
 opscore_year = "2012-2013";
 opscore_semester = "1";
 
-function getSemester(){
-    var day = new Date();
-    var y = day.getFullYear();
-    var m = day.getMonth() + 1;
+function getSemester() {
+	var day = new Date();
+	var y = day.getFullYear();
+	var m = day.getMonth() + 1;
 
-    if (m < 3){
-        opscore_year = (y-1) + "-" + y;
-        opscore_semester = "1";
-    }else if (m < 9){
-        opscore_year = (y-1) + "-" + y;
-        opscore_semester = "2";
-    }else{
-        opscore_year = y + "-" + (y+1);
-        opscore_semester = "1";
-    }
-    return;
+	if (m < 3) {
+		opscore_year = (y - 1) + "-" + y;
+		opscore_semester = "1";
+	} else if (m < 9) {
+		opscore_year = (y - 1) + "-" + y;
+		opscore_semester = "2";
+	} else {
+		opscore_year = y + "-" + (y + 1);
+		opscore_semester = "1";
+	}
+	return;
 }
 
 getSemester();
 
-function main()
-{
+function main() {
 	jQuery.noConflict();
-	jQuery(document).ready(function(){
-        
-		base_url = document.URL.slice(0,document.URL.indexOf("sjtu.edu.cn") + 11);
-		
+	jQuery(document).ready(function() {
+
+		base_url = document.URL.slice(0, document.URL.indexOf("sjtu.edu.cn") + 11);
+
 		//设置首页checkbox
 		set_index_page();
 		//优化左边菜单栏 
@@ -89,34 +90,29 @@ function main()
 		optimize_flattop_content();
 		//优化选课（重点）  
 		optimize_elect();
-		
+
 		//成绩查询
 		optimize_score_query();
 		//绩点查询
-		optimize_gpa_query();
+		// optimize_gpa_query();
 		//首页显示成绩
-		//index_show_score_query();
-        //修业查看中计算总绩点
-        optimize_myEductionList();
-
+		// index_show_score_query();
+		//修业查看中计算总绩点
+		optimize_myEductionList();
+		optimize_coreList();
 		//快速评教
 		fast_eval_index();
 		fast_eval_process();
-        
-        //快速评教，期中
-        fast_eval_midterm_index () ;
-        fast_eval_midterm_process();
-		
-		// NHCE - -
-		nhce_main();
+
+		//快速评教，期中
+		fast_eval_midterm_index();
+		fast_eval_midterm_process();
 	});
 }
 
 
 
-
-main(); 
-
+main();
 
 
 
