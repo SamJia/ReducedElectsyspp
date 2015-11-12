@@ -2,7 +2,6 @@ jQuery.get(
 	chrome.extension.getURL("manifest.json"),
 	function(data) {
 		localStorage['extension_version'] = data['version'];
-		alert(data['version']);
 	},
 	"json"
 );

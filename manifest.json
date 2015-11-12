@@ -1,23 +1,18 @@
 {
 	"name": "ReducedElectsys++",
-	"version": "1.1",
+	"version": "1.1.2",
 	"icons": { "128": "logo_new.png" },
 	"description": "上海交通大学选课网优化工具",
     "homepage_url": "http://laohyx.com/",
-   //  "background": {
-	  //   "scripts": ["background.js"],
-	  //   "persistent": false
-	  // },
-    "browser_action": {
+    "background": {
+	    "scripts": ["background.js"],
+	    "persistent": false
+	  },
+    "page_action": {
         "default_icon": "logo_new.png",
         "default_title": "ReducedElectsys++",
         "default_popup": "popup/popup.html"
     },
-    // "page_action": {
-    //     "default_icon": "logo_new.png",
-    //     "default_title": "ReducedElectsys++",
-    //     "default_popup": "popup/popup.html"
-    // },
 	"content_scripts": [
 		{
             "matches": ["http://*/*"
