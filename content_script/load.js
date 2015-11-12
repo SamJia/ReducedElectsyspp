@@ -86,8 +86,8 @@ function main() {
 		//优化左边折叠栏
 		optimize_sdtleft();
 		//优化上栏
-		optimize_flattop();
-		optimize_flattop_content();
+		// optimize_flattop();
+		// optimize_flattop_content();
 		//优化选课（重点）  
 		optimize_elect();
 

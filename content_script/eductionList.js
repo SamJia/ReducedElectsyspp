@@ -63,7 +63,7 @@ function gpa_colomn(table, title, colomn) {
 function optimize_coreList() {
     if (!inUrl("/edu/student/CoreCourses.aspx"))
         return 0;
-    jQuery("span#lbSS").after(jQuery('<tr><td height="26"></td><td class="tdline1" align="left" style="font-size:12px;">选中课程GPA：<span id="avg_gpa" >0</span>分</td><td class="tdline1" align="left" style="font-size:12px;">选中课程平均分：<span id="avg_score" >0</span>分</td><td class="tdline1" align="left" style="font-size:12px;"><a id="select_all_lessons" href="#" all="0" style="margin-left:2em;">全选</a></td></tr>'));
+    jQuery("span#lbSS").after(jQuery('<tr><td height="26"></td><td class="tdline1" align="left" style="font-size:12px;">选中课程GPA：<span id="avg_gpa" >0.00</span>分，选中课程平均分：<span id="avg_score" >0.00</span>分<a id="select_all_lessons" href="#" all="0" style="margin-left:2em;">全选</a></td></tr>'));
     
     jQuery("table#dgSet").find("tr").each(function() {
         var score = getScoreInNumber(jQuery(this).find("td:nth-child(8)").html());

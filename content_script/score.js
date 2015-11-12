@@ -33,7 +33,7 @@ function optimize_score_query() {
 		return 0;
 	if (!has_result_table())
 		return;
-	jQuery("#Table4").find("tr").after(jQuery('<tr><td height="26"></td><td class="tdline1" align="left" style="font-size:12px;">选中课程GPA：<span id="avg_gpa" >0</span>分</td><td class="tdline1" align="left" style="font-size:12px;">选中课程平均分：<span id="avg_score" >0</span>分</td><td class="tdline1" align="left" style="font-size:12px;"><a id="select_all_lessons" href="#" all="0" style="margin-left:2em;">全选</a></td></tr>'));
+	jQuery("#Table4").find("tr").after(jQuery('<tr><td height="26"></td><td class="tdline1" align="left" style="font-size:12px;">选中课程GPA：<span id="avg_gpa" >0.00</span>分，选中课程平均分：<span id="avg_score" >0.00</span>分<a id="select_all_lessons" href="#" all="0" style="margin-left:2em;">全选</a></td></tr>'));
 
 	if (inUrl("/edu/StudentScore/B_StudentScoreQuery.aspx"))
 		init_score_query();
